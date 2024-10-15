@@ -10,4 +10,10 @@ class ItemModel {
   final String title;
   final String imageUrl;
   final DateTime releaseDate;
+
+  String daysLeft() {
+    return ((releaseDate.difference(DateTime.now()).inDays) + 0.5)
+        .round()
+        .toString();
+  }
 }
