@@ -30,17 +30,30 @@ class ItemsRepository {
         .delete();
   }
 
+  Future<ItemModel> get({required String documentID}) async {
+    final doc = await FirebaseFirestore.instance
+        .collection('items')
+        .doc(documentID)
+        .get();
+    return ItemModel(
+      id: doc.id,
+      title: doc['title'],
+      imageUrl: doc['image_url'],
+      releaseDate: (doc['release_date'] as Timestamp).toDate(),
+    );
+  }
+
   Future<void> add(
     String title,
     String imageURL,
     DateTime releaseDate,
   ) async {
-      await FirebaseFirestore.instance.collection('items').add(
-        {
-          'title': title,
-          'image_url': imageURL,
-          'release_date': releaseDate,
-        },
-      );
+    await FirebaseFirestore.instance.collection('items').add(
+      {
+        'title': title,
+        'image_url': imageURL,
+        'release_date': releaseDate,
+      },
+    );
   }
 }
