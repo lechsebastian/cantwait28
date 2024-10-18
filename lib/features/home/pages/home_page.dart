@@ -98,7 +98,7 @@ class _ListViewItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap:() {
+      onTap: () {
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context) => DetailsPage(
@@ -148,7 +148,7 @@ class _ListViewItem extends StatelessWidget {
                           ),
                           const SizedBox(height: 10),
                           Text(
-                            itemModel.releaseDate.toString(),
+                            itemModel.releaseDateFormatted(),
                           ),
                         ],
                       ),

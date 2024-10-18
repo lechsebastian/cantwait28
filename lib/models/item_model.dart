@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 class ItemModel {
   ItemModel({
     required this.id,
@@ -15,5 +17,9 @@ class ItemModel {
     return ((releaseDate.difference(DateTime.now()).inDays) + 0.5)
         .round()
         .toString();
+  }
+
+  String releaseDateFormatted() {
+    return DateFormat.yMMMEd().format(releaseDate);
   }
 }
